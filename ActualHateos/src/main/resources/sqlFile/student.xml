@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+
+    <entry
+        key="student.insertRec">
+       INSERT INTO student(id, email, grade, loc, name)
+       VALUES(:id, :email, :grade, :loc, :name);
+    </entry>
+    
+    <entry
+        key="student.getStudentById">
+       SELECT id, name, email, grade, loc FROM student WHERE id=:id;
+    </entry>
+    
+     <entry
+        key="student.getAllStudents">
+       SELECT id, name, email, grade, loc FROM student;
+    </entry>
+    	 
+   <entry key="student.getStudentPrivateInformation">
+     SELECT  s.email, s.grade, s.loc, s.name,e.req_id, e.college collage, e.percentage, e.extra_activities extraActivites, exp.no_of_years, exp.job_loc
+	 FROM education_details e JOIN experience exp ON  e.req_id = exp.req_id
+     JOIN student s ON(s.id=e.req_id)
+	 WHERE e.req_id = :id
+    </entry>
+    
+</properties>  
